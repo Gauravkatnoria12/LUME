@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMÉ — Curated Living</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,100;1,9..144,300;1,9..144,400;1,9..144,700;1,9..144,900&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --cream:#f5efe4;
+  --cream2:#ede5d8;
+  --pink:#e8a4b0;
+  --pink-l:#f5d8df;
+  --pink-m:#eebec8;
+  --yellow:#f5e070;
+  --yellow-l:#faf0b0;
+  --sage:#b8d4c0;
+  --sage-l:#d8edd8;
+  --blue:#a8c8e8;
+  --blue-l:#d0e8f8;
+  --terra:#d4785c;
+  --terra-l:#f0c4b0;
+  --dark:#16130f;
+  --dark2:#2a2520;
+  --mid:#7a6e64;
+  --light:#faf6f0;
+  --star:#6ab8d8;
+}
+
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:#111;color:var(--dark);overflow-x:hidden;}
+
+/* ── LAYOUT ── */
+.wrap{display:flex;flex-direction:column;gap:10px;padding:10px;}
+.card{border-radius:22px;overflow:hidden;position:relative;}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--dark);color:var(--cream);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:300;letter-spacing:.18em;text-transform:uppercase;text-align:center;padding:10px;display:flex;align-items:center;justify-content:center;gap:40px;}
+.topbar-sep{color:var(--pink);font-size:.8rem;}
+
+/* ── NAV ── */
+.nav-card{background:var(--cream);padding:0;}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:22px 44px;}
+.logo{font-family:'Fraunces',serif;font-weight:900;font-size:1.6rem;letter-spacing:.06em;line-height:1;}
+.logo span{font-style:italic;font-weight:100;}
+.nav-links{display:flex;gap:32px;align-items:center;}
+.nav-links a{font-size:.78rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--dark);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--pink);}
+.nav-right{display:flex;align-items:center;gap:20px;}
+.nav-icon{background:none;border:none;cursor:pointer;color:var(--dark);display:flex;align-items:center;transition:color .2s;}
+.nav-icon:hover{color:var(--pink);}
+.nav-icon svg{width:20px;height:20px;}
+.nav-star svg{width:20px;height:20px;color:var(--star);animation:spinS 10s linear infinite;display:block;}
+@keyframes spinS{to{transform:rotate(360deg);}}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--dark);}
+
+/* ── HERO ── */
+.hero-card{background:var(--cream);min-height:calc(100vh - 100px);display:flex;flex-direction:column;}
+.hero-body{flex:1;padding:40px 44px 70px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;}
+.hero-title{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(3.5rem,9vw,8.5rem);line-height:.96;color:var(--dark);z-index:2;position:relative;}
+.hero-title em{font-style:italic;font-weight:100;color:var(--pink);}
+.hero-title .outline{-webkit-text-stroke:2px var(--dark);color:transparent;}
+.hero-row{display:flex;align-items:flex-end;gap:40px;margin-top:28px;z-index:2;position:relative;}
+.hero-desc{font-size:.82rem;font-weight:300;color:var(--mid);line-height:1.8;max-width:260px;border-left:2px solid var(--pink);padding-left:16px;}
+.hero-cta{display:flex;flex-direction:column;gap:12px;}
+.btn-primary{padding:14px 36px;background:var(--dark);color:var(--cream);border:none;border-radius:50px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background .3s,transform .25s;white-space:nowrap;}
+.btn-primary:hover{background:var(--pink);color:var(--dark);transform:scale(1.04);}
+.btn-outline{padding:14px 36px;background:transparent;color:var(--dark);border:1.5px solid var(--dark);border-radius:50px;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .3s;white-space:nowrap;}
+.btn-outline:hover{background:var(--dark);color:var(--cream);}
+.hero-badge{position:absolute;right:100px;top:40px;width:96px;height:96px;border:1.5px solid var(--dark);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;}
+.badge-txt{font-family:'Outfit',sans-serif;font-size:.46rem;text-transform:uppercase;letter-spacing:.18em;text-align:center;line-height:1.6;}
+.badge-svg{width:16px;height:16px;}
+.big-bg{position:absolute;bottom:-24px;right:-8px;font-family:'Fraunces',serif;font-style:italic;font-weight:900;font-size:clamp(7rem,22vw,20rem);color:var(--pink-l);line-height:1;pointer-events:none;z-index:1;user-select:none;}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;z-index:2;position:relative;}
+.tag{padding:7px 18px;border-radius:50px;font-size:.68rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--cream2);color:var(--mid);border:1px solid var(--cream2);}
+.tag.active{background:var(--dark);color:var(--cream);}
+
+/* ── MARQUEE ── */
+.mq-wrap{background:var(--dark);border-radius:22px;padding:18px 0;overflow:hidden;}
+.mq-track{display:flex;gap:48px;animation:mqa 20s linear infinite;white-space:nowrap;}
+.mq-item{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;color:var(--cream);flex-shrink:0;}
+.mq-item.it{font-style:italic;color:var(--yellow);font-weight:300;}
+@keyframes mqa{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── CATEGORIES ── */
+.cats-card{background:var(--yellow);display:grid;grid-template-columns:1fr 1fr 1fr;min-height:60vh;}
+.cat-item{padding:44px 36px;border-right:1px solid rgba(22,19,15,.12);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;cursor:pointer;transition:background .35s;}
+.cat-item:last-child{border-right:none;}
+.cat-item:hover{background:var(--pink-l);}
+.cat-num{font-family:'Fraunces',serif;font-size:.75rem;font-weight:300;opacity:.5;margin-bottom:16px;letter-spacing:.1em;}
+.cat-name{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2rem,4vw,3.5rem);line-height:1;margin-bottom:12px;}
+.cat-name em{font-style:italic;font-weight:100;}
+.cat-desc{font-size:.78rem;font-weight:300;color:var(--mid);line-height:1.7;max-width:200px;}
+.cat-count{font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;opacity:.6;margin-top:20px;}
+.cat-icon{position:absolute;bottom:24px;right:24px;width:64px;height:64px;opacity:.18;}
+.cat-arrow{width:36px;height:36px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:24px;transition:transform .3s,background .3s;}
+.cat-item:hover .cat-arrow{transform:rotate(-45deg);background:var(--terra);}
+.cat-arrow svg{width:14px;height:14px;color:var(--cream);}
+
+/* ── SECTION HEADER ── */
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;}
+.sec-title{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(2.5rem,6vw,5.5rem);line-height:1;}
+.sec-title em{font-style:italic;font-weight:100;}
+.sec-sub{font-size:.72rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);}
+
+/* ── PRODUCTS ── */
+.products-card{background:var(--cream);}
+.products-inner{padding:44px;}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+
+.pc{background:var(--light);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .45s cubic-bezier(.23,1,.32,1),box-shadow .45s;}
+.pc:hover{transform:translateY(-10px) rotate(-.4deg);box-shadow:0 28px 60px rgba(0,0,0,.1);}
+.pc-img{aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.bg-p{background:var(--pink-l);}
+.bg-y{background:var(--yellow-l);}
+.bg-s{background:var(--sage-l);}
+.bg-b{background:var(--blue-l);}
+.bg-t{background:var(--terra-l);}
+.bg-c{background:var(--cream2);}
+.bg-m{background:var(--pink-m);}
+.bg-bl{background:var(--blue);}
+.pc-svg{width:70px;height:70px;opacity:.72;color:var(--dark);transition:transform .5s cubic-bezier(.23,1,.32,1);}
+.pc:hover .pc-svg{transform:scale(1.12) rotate(4deg);}
+.pc-tag{position:absolute;top:12px;right:12px;background:var(--dark);color:var(--cream);font-size:.52rem;text-transform:uppercase;letter-spacing:.18em;padding:5px 12px;border-radius:20px;}
+.pc-tag.sale{background:var(--terra);}
+.pc-tag.new{background:var(--dark);}
+.pc-tag.hot{background:var(--pink);}
+.pc-info{padding:16px 18px 18px;}
+.pc-cat{font-size:.6rem;text-transform:uppercase;letter-spacing:.18em;color:var(--mid);margin-bottom:4px;font-weight:400;}
+.pc-name{font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;margin-bottom:3px;}
+.pc-desc{font-size:.7rem;font-weight:300;color:var(--mid);margin-bottom:12px;line-height:1.6;}
+.pc-bot{display:flex;justify-content:space-between;align-items:center;}
+.pc-prices{display:flex;align-items:baseline;gap:8px;}
+.pc-price{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;}
+.pc-old{font-size:.8rem;color:var(--mid);text-decoration:line-through;font-weight:300;}
+.pc-stars{display:flex;gap:2px;margin-bottom:6px;}
+.pc-stars svg{width:11px;height:11px;fill:var(--yellow);color:var(--yellow);}
+.add-btn{width:34px;height:34px;background:var(--dark);color:var(--cream);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s,transform .35s;}
+.add-btn svg{width:14px;height:14px;transition:transform .35s;}
+.add-btn:hover{background:var(--pink);color:var(--dark);}
+.add-btn:hover svg{transform:rotate(90deg);}
+.wishlist-btn{width:34px;height:34px;background:transparent;border:1.5px solid var(--cream2);color:var(--mid);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;}
+.wishlist-btn:hover{border-color:var(--pink);color:var(--pink);}
+.wishlist-btn svg{width:14px;height:14px;}
+
+/* ── BENEFITS ── */
+.benefits-card{background:var(--dark);display:grid;grid-template-columns:repeat(4,1fr);}
+.ben-item{padding:40px 32px;border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:14px;}
+.ben-item:last-child{border-right:none;}
+.ben-icon{width:44px;height:44px;background:rgba(255,255,255,.06);border-radius:12px;display:flex;align-items:center;justify-content:center;}
+.ben-icon svg{width:22px;height:22px;color:var(--yellow);}
+.ben-title{font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:var(--cream);}
+.ben-desc{font-size:.75rem;font-weight:300;color:rgba(255,255,255,.5);line-height:1.7;}
+
+/* ── FEATURED BANNER ── */
+.feat-card{background:var(--pink);display:grid;grid-template-columns:1fr 1fr;min-height:55vh;}
+.feat-left{padding:60px 52px;display:flex;flex-direction:column;justify-content:center;}
+.feat-eyebrow{font-size:.68rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--dark);opacity:.6;margin-bottom:20px;}
+.feat-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(3rem,6vw,5.5rem);line-height:.96;color:var(--dark);margin-bottom:24px;}
+.feat-title em{font-style:italic;font-weight:100;}
+.feat-body{font-size:.84rem;font-weight:300;line-height:1.8;max-width:340px;color:var(--dark2);margin-bottom:32px;}
+.feat-price{display:flex;align-items:baseline;gap:12px;margin-bottom:24px;}
+.feat-price-now{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:900;}
+.feat-price-was{font-size:1rem;text-decoration:line-through;opacity:.5;}
+.feat-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.feat-right{position:relative;display:flex;align-items:center;justify-content:center;background:var(--pink-m);}
+.feat-art{font-family:'Fraunces',serif;font-style:italic;font-weight:900;font-size:clamp(6rem,14vw,13rem);color:rgba(255,255,255,.25);line-height:1;user-select:none;}
+.feat-badge{position:absolute;top:32px;right:32px;width:90px;height:90px;background:var(--dark);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--cream);}
+.feat-badge-num{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:900;}
+.feat-badge-txt{font-size:.5rem;text-transform:uppercase;letter-spacing:.14em;opacity:.7;}
+.feat-main-svg{position:absolute;width:160px;height:160px;opacity:.7;}
+.feat-main-svg svg{width:100%;height:100%;color:var(--dark);}
+
+/* ── TESTIMONIALS ── */
+.test-card{background:var(--sage-l);padding:60px 44px;}
+.test-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.5rem,6vw,5rem);color:var(--dark);margin-bottom:44px;line-height:1;}
+.test-title em{font-style:italic;font-weight:100;color:var(--dark2);}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.tcard{background:var(--light);border-radius:16px;padding:28px;position:relative;transition:transform .4s cubic-bezier(.23,1,.32,1);}
+.tcard:hover{transform:translateY(-6px);}
+.tcard-quote{font-family:'Fraunces',serif;font-size:3rem;font-weight:900;color:var(--pink);line-height:1;margin-bottom:8px;}
+.tcard-text{font-size:.82rem;font-weight:300;line-height:1.8;color:var(--dark2);margin-bottom:20px;}
+.tcard-author{display:flex;align-items:center;gap:12px;}
+.tcard-ava{width:40px;height:40px;border-radius:50%;background:var(--pink-l);display:flex;align-items:center;justify-content:center;}
+.tcard-ava svg{width:20px;height:20px;color:var(--dark);opacity:.6;}
+.tcard-name{font-weight:600;font-size:.82rem;}
+.tcard-loc{font-size:.7rem;color:var(--mid);}
+.tcard-stars{display:flex;gap:2px;margin-bottom:8px;}
+.tcard-stars svg{width:12px;height:12px;fill:var(--yellow);}
+
+/* ── HOW IT WORKS ── */
+.how-card{background:var(--blue-l);padding:60px 44px;}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px;}
+.how-step{display:flex;flex-direction:column;gap:16px;position:relative;}
+.how-step:not(:last-child)::after{content:'';position:absolute;top:36px;right:-12px;width:24px;height:1.5px;background:var(--blue);opacity:.5;}
+.how-num{font-family:'Fraunces',serif;font-size:4rem;font-weight:900;color:var(--blue);opacity:.4;line-height:1;}
+.how-icon{width:48px;height:48px;background:var(--dark);border-radius:14px;display:flex;align-items:center;justify-content:center;}
+.how-icon svg{width:24px;height:24px;color:var(--cream);}
+.how-title{font-family:'Fraunces',serif;font-weight:700;font-size:1.3rem;}
+.how-desc{font-size:.78rem;font-weight:300;line-height:1.8;color:var(--mid);}
+
+/* ── TRENDING ── */
+.trend-card{background:var(--terra-l);padding:60px 44px;}
+.trend-scroll{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:44px;}
+
+/* ── NEWSLETTER ── */
+.news-card{background:var(--dark2);padding:70px 44px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.news-left .news-eyebrow{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pink);margin-bottom:16px;}
+.news-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.5rem,5vw,4.5rem);color:var(--cream);line-height:1;margin-bottom:16px;}
+.news-title em{font-style:italic;font-weight:100;color:var(--yellow);}
+.news-body{font-size:.82rem;font-weight:300;color:rgba(255,255,255,.5);line-height:1.8;}
+.news-form{display:flex;flex-direction:column;gap:16px;}
+.news-field{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.12);border-radius:50px;padding:14px 24px;font-family:'Outfit',sans-serif;font-size:.82rem;color:var(--cream);outline:none;transition:border-color .25s;}
+.news-field::placeholder{color:rgba(255,255,255,.3);}
+.news-field:focus{border-color:var(--pink);}
+.news-perks{display:flex;flex-direction:column;gap:10px;margin-top:8px;}
+.news-perk{display:flex;align-items:center;gap:10px;font-size:.75rem;color:rgba(255,255,255,.5);}
+.news-perk svg{width:14px;height:14px;color:var(--yellow);flex-shrink:0;}
+
+/* ── BRANDS ── */
+.brands-card{background:var(--cream2);padding:44px;display:flex;flex-direction:column;align-items:center;}
+.brands-label{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mid);margin-bottom:32px;}
+.brands-row{display:flex;gap:48px;align-items:center;flex-wrap:wrap;justify-content:center;}
+.brand-logo{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:900;color:var(--dark);opacity:.25;letter-spacing:.06em;transition:opacity .3s;}
+.brand-logo:hover{opacity:.7;}
+.brand-logo em{font-style:italic;font-weight:100;}
+
+/* ── FOOTER ── */
+.footer-card{background:var(--dark);border-radius:22px;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:48px;padding:60px 44px 44px;}
+.footer-brand .footer-logo{font-family:'Fraunces',serif;font-weight:900;font-size:1.8rem;letter-spacing:.06em;color:var(--cream);margin-bottom:16px;}
+.footer-logo span{font-style:italic;font-weight:100;}
+.footer-tagline{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.45);line-height:1.8;max-width:240px;margin-bottom:24px;}
+.footer-social{display:flex;gap:12px;}
+.soc-btn{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .25s,background .25s;}
+.soc-btn:hover{border-color:var(--pink);background:var(--pink);}
+.soc-btn svg{width:15px;height:15px;color:rgba(255,255,255,.6);}
+.soc-btn:hover svg{color:var(--dark);}
+.footer-col-title{font-family:'Fraunces',serif;font-weight:700;font-size:1rem;color:var(--cream);margin-bottom:20px;letter-spacing:.04em;}
+.footer-links{display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:.78rem;font-weight:300;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;letter-spacing:.02em;}
+.footer-links a:hover{color:var(--pink);}
+.footer-mid{border-top:1px solid rgba(255,255,255,.07);padding:28px 44px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;}
+.payment-row{display:flex;gap:10px;align-items:center;}
+.pay-badge{padding:5px 12px;background:rgba(255,255,255,.06);border-radius:6px;font-size:.62rem;color:rgba(255,255,255,.4);font-weight:500;letter-spacing:.1em;text-transform:uppercase;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding:20px 44px;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,.3);font-weight:300;letter-spacing:.05em;}
+.footer-legal{display:flex;gap:24px;}
+.footer-legal a{font-size:.72rem;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s;}
+.footer-legal a:hover{color:var(--pink);}
+.footer-trust{display:flex;align-items:center;gap:8px;font-size:.72rem;color:rgba(255,255,255,.3);}
+.footer-trust svg{width:14px;height:14px;color:var(--yellow);}
+
+/* ── CART ── */
+.cart-fab{position:fixed;bottom:28px;right:28px;width:54px;height:54px;background:var(--dark);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:100;transition:transform .3s,background .3s;color:var(--cream);}
+.cart-fab svg{width:22px;height:22px;}
+.cart-fab:hover{transform:scale(1.1);background:var(--pink);color:var(--dark);}
+.cart-cnt{position:absolute;top:-4px;right:-4px;background:var(--pink);color:var(--dark);font-size:.6rem;font-weight:700;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:150;opacity:0;pointer-events:none;transition:opacity .4s;backdrop-filter:blur(3px);}
+.overlay.show{opacity:1;pointer-events:all;}
+
+.cdrawer{position:fixed;top:0;right:-420px;width:390px;height:100vh;background:var(--cream);z-index:200;transition:right .55s cubic-bezier(.23,1,.32,1);display:flex;flex-direction:column;border-left:1px solid var(--cream2);}
+.cdrawer.open{right:0;}
+.cdrawer-head{padding:32px 28px 22px;border-bottom:1px solid var(--cream2);display:flex;justify-content:space-between;align-items:center;}
+.cdrawer-title{font-family:'Fraunces',serif;font-weight:900;font-size:1.8rem;}
+.cdrawer-close{background:none;border:none;cursor:pointer;color:var(--mid);padding:6px;border-radius:50%;transition:background .2s;}
+.cdrawer-close:hover{background:var(--cream2);}
+.cdrawer-close svg{width:18px;height:18px;display:block;}
+.cdrawer-body{flex:1;overflow-y:auto;padding:16px 28px;}
+.citem{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--cream2);animation:siR .35s cubic-bezier(.23,1,.32,1);}
+@keyframes siR{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:translateX(0)}}
+.citem-thumb{width:56px;height:66px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.citem-thumb svg{width:24px;height:24px;color:var(--dark);opacity:.7;}
+.citem-details{flex:1;}
+.citem-name{font-family:'Fraunces',serif;font-weight:600;font-size:1rem;margin-bottom:2px;}
+.citem-price{font-size:.78rem;color:var(--mid);font-weight:300;}
+.citem-rm{background:none;border:none;cursor:pointer;color:var(--mid);align-self:center;padding:4px;display:flex;border-radius:50%;transition:all .2s;}
+.citem-rm:hover{background:var(--cream2);color:var(--dark);}
+.citem-rm svg{width:14px;height:14px;}
+.cempty{font-family:'Fraunces',serif;font-style:italic;font-size:1.1rem;color:var(--mid);text-align:center;margin-top:40px;line-height:1.8;}
+.cdrawer-foot{padding:20px 28px 32px;border-top:1px solid var(--cream2);}
+.ctotal{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;}
+.ctotal-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;color:var(--mid);}
+.ctotal-amt{font-family:'Fraunces',serif;font-weight:900;font-size:1.8rem;}
+.ccheckout{width:100%;padding:15px;background:var(--dark);color:var(--cream);border:none;border-radius:50px;font-family:'Outfit',sans-serif;font-size:.75rem;text-transform:uppercase;letter-spacing:.2em;cursor:pointer;transition:background .3s,transform .25s;display:flex;align-items:center;justify-content:center;gap:10px;}
+.ccheckout svg{width:16px;height:16px;}
+.ccheckout:hover{background:var(--pink);color:var(--dark);transform:scale(1.02);}
+
+/* MOBILE NAV */
+.mnav{position:fixed;inset:0;background:var(--dark);z-index:300;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:28px;transform:translateY(-100%);transition:transform .55s cubic-bezier(.23,1,.32,1);}
+.mnav.open{transform:translateY(0);}
+.mnav a{font-family:'Fraunces',serif;font-size:clamp(2.5rem,8vw,4rem);font-weight:900;color:var(--cream);text-decoration:none;transition:color .2s,font-style .2s;}
+.mnav a:hover{color:var(--pink);font-style:italic;}
+.mnav-close{position:absolute;top:28px;right:36px;background:none;border:none;cursor:pointer;color:var(--cream);display:flex;}
+.mnav-close svg{width:26px;height:26px;}
+
+/* TOAST */
+.toast{position:fixed;bottom:92px;right:28px;background:var(--dark);color:var(--cream);padding:12px 22px;border-radius:50px;font-family:'Outfit',sans-serif;font-size:.78rem;letter-spacing:.04em;z-index:500;transform:translateY(16px);opacity:0;transition:all .35s cubic-bezier(.23,1,.32,1);pointer-events:none;display:flex;align-items:center;gap:8px;}
+.toast svg{width:14px;height:14px;color:var(--yellow);flex-shrink:0;}
+.toast.show{transform:translateY(0);opacity:1;}
+
+/* REVEAL */
+.r{opacity:0;transform:translateY(32px);transition:opacity .85s ease,transform .85s cubic-bezier(.23,1,.32,1);}
+.r.v{opacity:1;transform:translateY(0);}
+.r:nth-child(2){transition-delay:.08s}.r:nth-child(3){transition-delay:.16s}.r:nth-child(4){transition-delay:.24s}.r:nth-child(5){transition-delay:.32s}.r:nth-child(6){transition-delay:.40s}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.pgrid{grid-template-columns:repeat(3,1fr);}.trend-scroll{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:900px){
+  .pgrid{grid-template-columns:repeat(2,1fr);}
+  .cats-card{grid-template-columns:1fr 1fr;}
+  .cat-item:last-child{grid-column:1/-1;border-top:1px solid rgba(22,19,15,.12);border-right:none;}
+  .benefits-card{grid-template-columns:repeat(2,1fr);}
+  .ben-item:nth-child(2){border-right:none;}
+  .ben-item:nth-child(3){border-top:1px solid rgba(255,255,255,.08);}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .footer-brand{grid-column:1/-1;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero-badge{display:none;}
+  .how-grid{grid-template-columns:repeat(2,1fr);}
+  .tgrid{grid-template-columns:repeat(2,1fr);}
+  .feat-card{grid-template-columns:1fr;}
+  .feat-right{height: 200px}
+  .news-card{grid-template-columns:1fr;}
+  .footer-mid{grid-template-columns:1fr;}
+  .payment-row{display:grid;grid-template-columns:100px;}
+}
+@media(max-width:600px){
+  .wrap{padding:8px;gap:8px;}
+  .pgrid{grid-template-columns:1fr;}
+  .cats-card{grid-template-columns:1fr;}
+  .cat-item{border-right:none;border-bottom:1px solid rgba(22,19,15,.12);}
+  .nav-inner{padding:18px 22px;}
+  .products-inner{padding:28px 20px;}
+  .tgrid{grid-template-columns:1fr;}
+  .how-grid{grid-template-columns:1fr;}
+  .trend-scroll{grid-template-columns:repeat(2,1fr);}
+  .footer-top{grid-template-columns:1fr;padding:40px 24px 32px;gap:32px;}
+  .footer-mid,.footer-bottom{padding:18px 24px;flex-direction:column;gap:12px;}
+  .brands-row{gap:28px;}
+  .cdrawer{width:100%;right:-110%;}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="curR"></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>Worldwide shipping on orders over $75</span>
+  <span class="topbar-sep">✦</span>
+  <span>New arrivals every Friday</span>
+  <span class="topbar-sep">✦</span>
+  <span>30-day hassle-free returns</span>
+</div>
+
+<div class="wrap">
+
+<!-- NAV -->
+<div class="card nav-card">
+  <div class="nav-inner">
+    <div class="logo">LUM<span>É</span></div>
+    <nav class="nav-links">
+      <a href="#">Shop</a>
+      <a href="#">Collections</a>
+      <a href="#">About</a>
+      <a href="#">Journal</a>
+      <a href="#">Sustainability</a>
+    </nav>
+    <div class="nav-right">
+      <button class="nav-icon" aria-label="Search">
+        <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="9" r="6"/><line x1="13.5" y1="13.5" x2="20" y2="20"/></svg>
+      </button>
+      <div class="nav-star">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.2 6.8L20 12l-6.8 1.2L12 22l-1.2-6.8L4 12l6.8-1.2z"/></svg>
+      </div>
+      <button class="nav-icon" id="cartFab2" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      </button>
+      <button class="hamburger" id="menuBtn"><span></span><span></span></button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="card hero-card">
+  <div class="hero-body">
+    <div class="hero-badge r">
+      <svg class="badge-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14 C9 16.5 15 16.5 16 14" stroke-linecap="round"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg>
+      <span class="badge-txt">Curated<br>Living ✦</span>
+    </div>
+
+    <h1 class="hero-title r">
+      Welcome<br>
+      to the <em>art</em><br>
+      of <span class="outline">living</span><br>
+      beautifully.
+    </h1>
+
+    <div class="hero-row r">
+      <p class="hero-desc">We source the world's most beautiful objects — from artisan ceramics to handwoven textiles — delivered straight to your door with no minimums.</p>
+      <div class="hero-cta">
+        <button class="btn-primary" onclick="document.querySelector('.products-inner').scrollIntoView({behavior:'smooth'})">Explore Collection</button>
+        <button class="btn-outline">Our Story</button>
+      </div>
+    </div>
+
+    <div class="hero-tags r">
+      <span class="tag active">All</span>
+      <span class="tag">Home Décor</span>
+      <span class="tag">Ceramics</span>
+      <span class="tag">Textiles</span>
+      <span class="tag">Candles</span>
+      <span class="tag">Art Prints</span>
+      <span class="tag">Stationery</span>
+    </div>
+
+    <div class="big-bg">Shop</div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="mq-wrap">
+  <div class="mq-track">
+    <span class="mq-item">Curated Objects</span><span class="mq-item it">✦</span>
+    <span class="mq-item">Artisan Made</span><span class="mq-item it">✦</span>
+    <span class="mq-item it">Worldwide Shipping</span><span class="mq-item">✦</span>
+    <span class="mq-item">30-Day Returns</span><span class="mq-item it">✦</span>
+    <span class="mq-item">Drop-Shipped Daily</span><span class="mq-item it">✦</span>
+    <span class="mq-item it">Ethically Sourced</span><span class="mq-item">✦</span>
+    <span class="mq-item">Curated Objects</span><span class="mq-item it">✦</span>
+    <span class="mq-item">Artisan Made</span><span class="mq-item it">✦</span>
+    <span class="mq-item it">Worldwide Shipping</span><span class="mq-item">✦</span>
+    <span class="mq-item">30-Day Returns</span><span class="mq-item it">✦</span>
+    <span class="mq-item">Drop-Shipped Daily</span><span class="mq-item it">✦</span>
+    <span class="mq-item it">Ethically Sourced</span><span class="mq-item">✦</span>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<div class="card cats-card">
+  <div class="cat-item r">
+    <div class="cat-num">01</div>
+    <div>
+      <div class="cat-name">Home<br><em>Décor</em></div>
+      <div class="cat-desc">Curated objects that transform any space into a sanctuary of beauty and intention.</div>
+      <div class="cat-count">48 Products</div>
+    </div>
+    <div class="cat-arrow">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="2" y1="12" x2="12" y2="2"/><polyline points="5,2 12,2 12,9"/></svg>
+    </div>
+    <svg class="cat-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2"><ellipse cx="32" cy="18" rx="12" ry="6"/><path d="M20 18 C14 34 16 54 32 58 C48 54 50 34 44 18"/></svg>
+  </div>
+  <div class="cat-item r">
+    <div class="cat-num">02</div>
+    <div>
+      <div class="cat-name">Textiles<br><em>&amp; Linen</em></div>
+      <div class="cat-desc">Handwoven throws, cushions and table linens from independent craftspeople globally.</div>
+      <div class="cat-count">32 Products</div>
+    </div>
+    <div class="cat-arrow">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="2" y1="12" x2="12" y2="2"/><polyline points="5,2 12,2 12,9"/></svg>
+    </div>
+    <svg class="cat-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="16" y="12" width="32" height="40" rx="2"/><line x1="16" y1="22" x2="48" y2="22"/><line x1="16" y1="32" x2="48" y2="32"/><line x1="16" y1="42" x2="48" y2="42"/></svg>
+  </div>
+  <div class="cat-item r">
+    <div class="cat-num">03</div>
+    <div>
+      <div class="cat-name">Art<br><em>Prints</em></div>
+      <div class="cat-desc">Limited edition risograph and screen prints from emerging and established artists.</div>
+      <div class="cat-count">24 Products</div>
+    </div>
+    <div class="cat-arrow">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="2" y1="12" x2="12" y2="2"/><polyline points="5,2 12,2 12,9"/></svg>
+    </div>
+    <svg class="cat-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="10" y="8" width="44" height="48" rx="2"/><rect x="16" y="14" width="32" height="24" rx="1"/></svg>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<div class="card benefits-card">
+  <div class="ben-item r">
+    <div class="ben-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </div>
+    <div class="ben-title">Free Worldwide Shipping</div>
+    <div class="ben-desc">Orders over $75 ship free to 180+ countries. Standard delivery in 5–12 business days.</div>
+  </div>
+  <div class="ben-item r">
+    <div class="ben-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16v16H4z"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+    </div>
+    <div class="ben-title">30-Day Easy Returns</div>
+    <div class="ben-desc">Not in love? Return anything within 30 days for a full refund — no questions asked.</div>
+  </div>
+  <div class="ben-item r">
+    <div class="ben-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <div class="ben-title">Secure Payments</div>
+    <div class="ben-desc">256-bit SSL encryption. We accept Visa, Mastercard, PayPal, Apple Pay and more.</div>
+  </div>
+  <div class="ben-item r">
+    <div class="ben-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+    </div>
+    <div class="ben-title">24/7 Support</div>
+    <div class="ben-desc">Our team is here around the clock. Live chat, email, or call — we respond within 2 hours.</div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="card products-card">
+  <div class="products-inner">
+    <div class="sec-head r">
+      <h2 class="sec-title">New<br><em>Arrivals</em></h2>
+      <span class="sec-sub">— 120+ curated products</span>
+    </div>
+    <div class="pgrid">
+
+      <div class="pc r bg-dummy" data-bg="p">
+        <div class="pc-img bg-p">
+          <svg class="pc-svg" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><ellipse cx="40" cy="22" rx="13" ry="6"/><path d="M27 22C21 38 23 58 40 62 C57 58 59 38 53 22"/><ellipse cx="40" cy="62" rx="13" ry="5"/><path d="M33 16 C33 13 47 13 47 16" stroke-linecap="round"/></svg>
+          <div class="pc-tag new">New</div>
+        </div>
+        <div class="pc-info">
+          <div class="pc-cat">Ceramics</div>
+          <div class="pc-stars">
+            <svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg>
+            <svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg>
+            <svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg>
+            <svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg>
+            <svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg>
+          </div>
+          <div class="pc-name">Ceramic Vessel</div>
+          <div class="pc-desc">Hand-thrown stoneware, reactive matte glaze</div>
+          <div class="pc-bot">
+            <div><div class="pc-prices"><span class="pc-price">$148</span></div></div>
+            <div style="display:flex;gap:8px">
+              <button class="wishlist-btn"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0 5 5 0 0110 0c0 4.5-7 9-7 9z" stroke-linejoin="round"/></svg></button>
+              <button class="add-btn" onclick="addToCart('Ceramic Vessel',148,'p')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pc r">
+        <div class="pc-img bg-y">
+          <svg class="pc-svg" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="28" y="40" width="24" height="26" rx="2"/><ellipse cx="40" cy="40" rx="12" ry="4"/><line x1="40" y1="36" x2="40" y2="22"/><path d="M40 22C37 17 33 14 35 9C37 5 43 7 43 12C43 17 40 22 40 22Z" fill="currentColor" opacity="0.3" stroke="none"/></svg>
+          <div class="pc-tag sale">Sale</div>
+        </div>
+        <div class="pc-info">
+          <div class="pc-cat">Candles</div>
+          <div class="pc-stars"><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg></div>
+          <div class="pc-name">Amber Beeswax Candle</div>
+          <div class="pc-desc">40hr burn, oakwood wick, hand-poured</div>
+          <div class="pc-bot">
+            <div><div class="pc-prices"><span class="pc-price">$48</span><span class="pc-old">$62</span></div></div>
+            <div style="display:flex;gap:8px"><button class="wishlist-btn"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0 5 5 0 0110 0c0 4.5-7 9-7 9z"/></svg></button><button class="add-btn" onclick="addToCart('Amber Candle',48,'y')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pc r">
+        <div class="pc-img bg-s">
+          <svg class="pc-svg" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M29 38 L25 64 Q40 68 55 64 L51 38Z" stroke-linejoin="round"/><ellipse cx="40" cy="38" rx="11" ry="4"/><path d="M40 32C40 24 35 20 36 14" stroke-linecap="round"/><path d="M40 28C44 24 50 26 48 32" stroke-linecap="round"/></svg>
+          <div class="pc-tag hot">Hot</div>
+        </div>
+        <div class="pc-info">
+          <div class="pc-cat">Plants</div>
+          <div class="pc-stars"><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg></div>
+          <div class="pc-name">Terracotta Planter</div>
+          <div class="pc-desc">Raw terracotta, drainage hole, artisan shaped</div>
+          <div class="pc-bot">
+            <div><div class="pc-prices"><span class="pc-price">$88</span></div></div>
+            <div style="display:flex;gap:8px"><button class="wishlist-btn"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0 5 5 0 0110 0c0 4.5-7 9-7 9z"/></svg></button><button class="add-btn" onclick="addToCart('Terracotta Planter',88,'s')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pc r">
+        <div class="pc-img bg-b">
+          <svg class="pc-svg" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="16" y="24" width="20" height="32" rx="1.5"/><rect x="20" y="20" width="20" height="32" rx="1.5"/><rect x="24" y="16" width="20" height="32" rx="1.5"/><line x1="28" y1="24" x2="28" y2="44"/><line x1="32" y1="28" x2="40" y2="28"/><line x1="32" y1="34" x2="40" y2="34"/></svg>
+        </div>
+        <div class="pc-info">
+          <div class="pc-cat">Stationery</div>
+          <div class="pc-stars"><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg></div>
+          <div class="pc-name">Curated Art Book Set</div>
+          <div class="pc-desc">3 volumes — design, illustration & typography</div>
+          <div class="pc-bot">
+            <div><div class="pc-prices"><span class="pc-price">$210</span></div></div>
+            <div style="display:flex;gap:8px"><button class="wishlist-btn"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0 5 5 0 0110 0c0 4.5-7 9-7 9z"/></svg></button><button class="add-btn" onclick="addToCart('Art Book Set',210,'b')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pc r">
+        <div class="pc-img bg-m">
+          <svg class="pc-svg" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="18" y="14" width="44" height="52" rx="2"/><rect x="24" y="20" width="32" height="26" rx="1"/><path d="M30 26 Q40 36 50 26" stroke-linecap="round"/><circle cx="32" cy="30" r="3" opacity="0.5" fill="currentColor" stroke="none"/><line x1="24" y1="52" x2="56" y2="52"/><line x1="24" y1="58" x2="46" y2="58"/></svg>
+          <div class="pc-tag new">New</div>
+        </div>
+        <div class="pc-info">
+          <div class="pc-cat">Art Prints</div>
+          <div class="pc-stars"><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg></div>
+          <div class="pc-name">Risograph Print No. 7</div>
+          <div class="pc-desc">A3 size, signed & numbered edition of 50</div>
+          <div class="pc-bot">
+            <div><div class="pc-prices"><span class="pc-price">$95</span></div></div>
+            <div style="display:flex;gap:8px"><button class="wishlist-btn"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0 5 5 0 0110 0c0 4.5-7 9-7 9z"/></svg></button><button class="add-btn" onclick="addToCart('Risograph Print',95,'m')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pc r">
+        <div class="pc-img bg-t">
+          <svg class="pc-svg" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M29 30L33 60Q40 64 47 60L51 30Z" stroke-linejoin="round"/><ellipse cx="40" cy="30" rx="11" ry="4"/><path d="M51 36C60 36 62 46 54 48" stroke-linecap="round"/><path d="M34 24C34 20 36 18 34 14" stroke-linecap="round" opacity="0.4"/><path d="M40 22C40 18 42 16 40 12" stroke-linecap="round" opacity="0.4"/></svg>
+          <div class="pc-tag sale">Sale</div>
+        </div>
+        <div class="pc-info">
+          <div class="pc-cat">Ceramics</div>
+          <div class="pc-stars"><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg></div>
+          <div class="pc-name">Soda-Fired Wabi Cup</div>
+          <div class="pc-desc">Porcelain with natural ash glaze, 240ml</div>
+          <div class="pc-bot">
+            <div><div class="pc-prices"><span class="pc-price">$58</span><span class="pc-old">$74</span></div></div>
+            <div style="display:flex;gap:8px"><button class="wishlist-btn"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0 5 5 0 0110 0c0 4.5-7 9-7 9z"/></svg></button><button class="add-btn" onclick="addToCart('Wabi Cup',58,'t')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pc r">
+        <div class="pc-img bg-c">
+          <svg class="pc-svg" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="20" y="20" width="40" height="30" rx="2"/><line x1="20" y1="30" x2="60" y2="30"/><line x1="35" y1="50" x2="35" y2="62"/><line x1="45" y1="50" x2="45" y2="62"/><line x1="28" y1="62" x2="52" y2="62"/><circle cx="40" cy="25" r="2" fill="currentColor" opacity="0.5"/></svg>
+        </div>
+        <div class="pc-info">
+          <div class="pc-cat">Furniture</div>
+          <div class="pc-stars"><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg></div>
+          <div class="pc-name">Minimal Side Table</div>
+          <div class="pc-desc">Solid ash wood, hand-finished natural oil</div>
+          <div class="pc-bot">
+            <div><div class="pc-prices"><span class="pc-price">$320</span></div></div>
+            <div style="display:flex;gap:8px"><button class="wishlist-btn"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0 5 5 0 0110 0c0 4.5-7 9-7 9z"/></svg></button><button class="add-btn" onclick="addToCart('Side Table',320,'c')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pc r">
+        <div class="pc-img bg-bl">
+          <svg class="pc-svg" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><ellipse cx="40" cy="55" rx="18" ry="8"/><path d="M22 55C22 55 18 30 40 18C62 30 58 55 58 55"/><path d="M40 18C40 18 34 28 34 40C34 48 40 55 40 55C40 55 46 48 46 40C46 28 40 18 40 18Z" opacity="0.3" fill="currentColor" stroke="none"/></svg>
+          <div class="pc-tag hot">Hot</div>
+        </div>
+        <div class="pc-info">
+          <div class="pc-cat">Textiles</div>
+          <div class="pc-stars"><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg></div>
+          <div class="pc-name">Handwoven Throw</div>
+          <div class="pc-desc">100% Peruvian alpaca, natural dyes, 150×200cm</div>
+          <div class="pc-bot">
+            <div><div class="pc-prices"><span class="pc-price">$185</span></div></div>
+            <div style="display:flex;gap:8px"><button class="wishlist-btn"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0 5 5 0 0110 0c0 4.5-7 9-7 9z"/></svg></button><button class="add-btn" onclick="addToCart('Handwoven Throw',185,'bl')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></button></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED BANNER -->
+<div class="card feat-card">
+  <div class="feat-left">
+    <div class="feat-eyebrow">✦ Featured Collection</div>
+    <h2 class="feat-title">The Wabi-Sabi<br><em>Edit.</em></h2>
+    <p class="feat-body">Inspired by the Japanese philosophy of finding beauty in imperfection. Each piece in this collection is intentionally imperfect — handmade, organic, raw. Your space, transformed.</p>
+    <div class="feat-price">
+      <span class="feat-price-now">$299</span>
+      <span class="feat-price-was">$420</span>
+    </div>
+    <div class="feat-btns">
+      <button class="btn-primary" onclick="addToCart('Wabi-Sabi Bundle',299,'p')">Add Bundle to Cart</button>
+      <button class="btn-outline">View Details</button>
+    </div>
+  </div>
+  <div class="feat-right">
+    <div class="feat-art">Wabi</div>
+    <div class="feat-badge">
+      <span class="feat-badge-num">29%</span>
+      <span class="feat-badge-txt">Off today</span>
+    </div>
+    <div class="feat-main-svg">
+      <svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="1.2"><ellipse cx="80" cy="44" rx="26" ry="12"/><path d="M54 44C42 76 46 116 80 124 C114 116 118 76 106 44"/><ellipse cx="80" cy="124" rx="26" ry="10"/><path d="M66 32C66 26 94 26 94 32" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="card how-card">
+  <div class="sec-head r">
+    <h2 class="sec-title">How it<br><em>works.</em></h2>
+    <span class="sec-sub">— Simple, fast, beautiful</span>
+  </div>
+  <div class="how-grid">
+    <div class="how-step r">
+      <div class="how-num">01</div>
+      <div class="how-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      </div>
+      <div class="how-title">Browse & Discover</div>
+      <div class="how-desc">Explore our curated collection of 120+ beautiful objects sourced from artisans around the world.</div>
+    </div>
+    <div class="how-step r">
+      <div class="how-num">02</div>
+      <div class="how-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+      </div>
+      <div class="how-title">Add to Cart</div>
+      <div class="how-desc">Select your favorites. No minimum order, no subscription. Buy one or twenty — it's up to you.</div>
+    </div>
+    <div class="how-step r">
+      <div class="how-num">03</div>
+      <div class="how-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="how-title">Secure Checkout</div>
+      <div class="how-desc">Pay safely with any method. We accept 15+ payment options including PayPal and Apple Pay.</div>
+    </div>
+    <div class="how-step r">
+      <div class="how-num">04</div>
+      <div class="how-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><path d="M16 11V9a2 2 0 00-4 0v2"/></svg>
+      </div>
+      <div class="how-title">Delivered to You</div>
+      <div class="how-desc">Shipped directly from our artisan partners worldwide. Tracked, packaged beautifully, on time.</div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="card test-card">
+  <h2 class="test-title r">What our<br><em>customers</em> say.</h2>
+  <div class="tgrid">
+    <div class="tcard r">
+      <div class="tcard-quote">"</div>
+      <div class="tcard-stars"><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg></div>
+      <div class="tcard-text">The Ceramic Vessel arrived so beautifully packaged — I genuinely cried. It's even more stunning in person than in the photos. This brand really understands what beauty means.</div>
+      <div class="tcard-author">
+        <div class="tcard-ava"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="20" cy="14" r="7"/><path d="M6 38 C6 28 34 28 34 38"/></svg></div>
+        <div><div class="tcard-name">Amara Osei</div><div class="tcard-loc">London, UK</div></div>
+      </div>
+    </div>
+    <div class="tcard r">
+      <div class="tcard-quote">"</div>
+      <div class="tcard-stars"><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg></div>
+      <div class="tcard-text">Ordered the Wabi-Sabi bundle for our new apartment. Everything is absolutely perfect. The handwoven throw is especially gorgeous — such quality for the price. Will be back!</div>
+      <div class="tcard-author">
+        <div class="tcard-ava"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="20" cy="14" r="7"/><path d="M6 38 C6 28 34 28 34 38"/></svg></div>
+        <div><div class="tcard-name">Mia Tanaka</div><div class="tcard-loc">Tokyo, Japan</div></div>
+      </div>
+    </div>
+    <div class="tcard r">
+      <div class="tcard-quote">"</div>
+      <div class="tcard-stars"><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.5 8.5,7 9.5,10.5 6,8.5 2.5,10.5 3.5,7 1,4.5 4.5,4.5"/></svg></div>
+      <div class="tcard-text">Incredible customer service. My order was slightly delayed and they offered a full refund AND let me keep the items. That's a company that actually cares about people.</div>
+      <div class="tcard-author">
+        <div class="tcard-ava"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="20" cy="14" r="7"/><path d="M6 38 C6 28 34 28 34 38"/></svg></div>
+        <div><div class="tcard-name">Carlos Mendez</div><div class="tcard-loc">Barcelona, Spain</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRENDING -->
+<div class="card trend-card">
+  <div class="sec-head r">
+    <h2 class="sec-title">Trending<br><em>this week.</em></h2>
+    <span class="sec-sub">— Top sellers</span>
+  </div>
+  <div class="trend-scroll">
+    <div class="pc r"><div class="pc-img bg-p" style="aspect-ratio:1/1;"><svg class="pc-svg" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="40" cy="40" r="24"/><circle cx="40" cy="40" r="14"/><circle cx="40" cy="40" r="6"/></svg><div class="pc-tag hot">Hot</div></div><div class="pc-info"><div class="pc-cat">Décor</div><div class="pc-name">Concentric Mirror</div><div class="pc-bot"><div class="pc-prices"><span class="pc-price">$165</span></div><button class="add-btn" onclick="addToCart('Concentric Mirror',165,'p')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></button></div></div></div>
+
+    <div class="pc r"><div class="pc-img bg-s" style="aspect-ratio:1/1;"><svg class="pc-svg" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M20 56V36l20-16 20 16v20H20Z"/><path d="M32 56V44h16v12"/><path d="M40 20v36"/></svg></div><div class="pc-info"><div class="pc-cat">Décor</div><div class="pc-name">Arch Wall Shelf</div><div class="pc-bot"><div class="pc-prices"><span class="pc-price">$240</span></div><button class="add-btn" onclick="addToCart('Arch Shelf',240,'s')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></button></div></div></div>
+
+    <div class="pc r"><div class="pc-img bg-y" style="aspect-ratio:1/1;"><svg class="pc-svg" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M20 28C20 28 24 12 40 12C56 12 60 28 60 28L54 64H26Z"/><line x1="26" y1="44" x2="54" y2="44"/></svg><div class="pc-tag new">New</div></div><div class="pc-info"><div class="pc-cat">Lighting</div><div class="pc-name">Washi Pendant</div><div class="pc-bot"><div class="pc-prices"><span class="pc-price">$128</span></div><button class="add-btn" onclick="addToCart('Washi Pendant',128,'y')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></button></div></div></div>
+
+    <div class="pc r"><div class="pc-img bg-b" style="aspect-ratio:1/1;"><svg class="pc-svg" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M24 58V30C24 24 32 18 40 18C48 18 56 24 56 30V58"/><line x1="20" y1="58" x2="60" y2="58"/><line x1="32" y1="38" x2="48" y2="38"/></svg></div><div class="pc-info"><div class="pc-cat">Furniture</div><div class="pc-name">Bamboo Stool</div><div class="pc-bot"><div class="pc-prices"><span class="pc-price">$180</span></div><button class="add-btn" onclick="addToCart('Bamboo Stool',180,'b')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></button></div></div></div>
+
+    <div class="pc r"><div class="pc-img bg-m" style="aspect-ratio:1/1;"><svg class="pc-svg" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="18" y="24" width="44" height="32" rx="4"/><line x1="18" y1="36" x2="62" y2="36"/><circle cx="40" cy="52" r="4"/><line x1="40" y1="48" x2="40" y2="24"/></svg><div class="pc-tag sale">Sale</div></div><div class="pc-info"><div class="pc-cat">Lighting</div><div class="pc-name">Ceramic Table Lamp</div><div class="pc-bot"><div class="pc-prices"><span class="pc-price">$198</span><span class="pc-old">$250</span></div><button class="add-btn" onclick="addToCart('Ceramic Lamp',198,'m')"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></button></div></div></div>
+  </div>
+</div>
+
+<!-- BRANDS -->
+<div class="card brands-card">
+  <div class="brands-label">Trusted by 12,000+ happy customers · As seen in</div>
+  <div class="brands-row">
+    <div class="brand-logo">VOGUE<em>living</em></div>
+    <div class="brand-logo">KINFOLK</div>
+    <div class="brand-logo">DES<em>ign</em>MILK</div>
+    <div class="brand-logo">MONOCLE</div>
+    <div class="brand-logo">WALLPAPER<em>*</em></div>
+    <div class="brand-logo">CEREAL</div>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="card news-card">
+  <div class="news-left">
+    <div class="news-eyebrow">✦ Join the Community</div>
+    <h2 class="news-title">Get <em>15% off</em><br>your first order.</h2>
+    <p class="news-body">Subscribe to our weekly curation newsletter. Early access to new drops, styling inspiration, and exclusive member-only discounts.</p>
+  </div>
+  <div>
+    <div class="news-form">
+      <input class="news-field" type="text" placeholder="Your full name">
+      <input class="news-field" type="email" placeholder="Your email address">
+      <button class="btn-primary" onclick="showToast('Welcome! Check your inbox for your 15% code.')">Get My Discount →</button>
+    </div>
+    <div class="news-perks">
+      <div class="news-perk"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="1,7 5,11 13,3"/></svg>Weekly new arrivals curated by our team</div>
+      <div class="news-perk"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="1,7 5,11 13,3"/></svg>Exclusive member-only sales up to 40% off</div>
+      <div class="news-perk"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="1,7 5,11 13,3"/></svg>Cancel anytime — no spam, ever</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="card footer-card">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">LUM<span>É</span></div>
+      <p class="footer-tagline">We believe your home should tell your story. Every object we carry is chosen for its beauty, intention, and the hands that made it.</p>
+      <div class="footer-social">
+        <div class="soc-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div class="soc-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </div>
+        <div class="soc-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+        </div>
+        <div class="soc-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Shop</div>
+      <div class="footer-links">
+        <a href="#">New Arrivals</a>
+        <a href="#">Home Décor</a>
+        <a href="#">Ceramics</a>
+        <a href="#">Textiles</a>
+        <a href="#">Art Prints</a>
+        <a href="#">Candles</a>
+        <a href="#">Furniture</a>
+        <a href="#">Sale</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <div class="footer-links">
+        <a href="#">Our Story</a>
+        <a href="#">Sustainability</a>
+        <a href="#">Artisan Partners</a>
+        <a href="#">Journal</a>
+        <a href="#">Press</a>
+        <a href="#">Careers</a>
+        <a href="#">Affiliates</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Support</div>
+      <div class="footer-links">
+        <a href="#">Help Center</a>
+        <a href="#">Track Order</a>
+        <a href="#">Returns</a>
+        <a href="#">Shipping Info</a>
+        <a href="#">Size Guide</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Live Chat</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <div class="footer-links">
+        <a href="#">hello@lume.co</a>
+        <a href="#">+1 (555) 234-5678</a>
+        <a href="#">Mon–Fri, 9am–6pm EST</a>
+        <br>
+        <a href="#" style="opacity:.6;font-size:.7rem;">24 Artisan Way,<br>New York, NY 10001</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-mid">
+    <div>
+      <div style="font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px;">Accepted Payments</div>
+      <div class="payment-row">
+        <div class="pay-badge">Visa</div>
+        <div class="pay-badge">Mastercard</div>
+        <div class="pay-badge">PayPal</div>
+        <div class="pay-badge">Apple Pay</div>
+        <div class="pay-badge">Klarna</div>
+        <div class="pay-badge">AMEX</div>
+      </div>
+    </div>
+    <div class="footer-trust">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 1l1.6 3.3L12 5l-2.5 2.4.6 3.5L7 9.2 3.9 10.9l.6-3.5L2 5l3.4-.7z"/></svg>
+      <span>Verified by 12,400+ customers · 4.9/5 average rating</span>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 LUMÉ Studio. All rights reserved. Drop-shipped with love.</div>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Settings</a>
+      <a href="#">Accessibility</a>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- CART FAB -->
+<button class="cart-fab" id="cartFab" aria-label="Cart">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+  <div class="cart-cnt" id="cartCnt">0</div>
+</button>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- CART DRAWER -->
+<div class="cdrawer" id="cdrawer">
+  <div class="cdrawer-head">
+    <h2 class="cdrawer-title">Your Bag</h2>
+    <button class="cdrawer-close" onclick="closeCart()">
+      <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="1" y1="1" x2="17" y2="17"/><line x1="17" y1="1" x2="1" y2="17"/></svg>
+    </button>
+  </div>
+  <div class="cdrawer-body" id="cdrawerBody">
+    <p class="cempty" id="cempty">Your bag is empty.<br><em>Start discovering beautiful things.</em></p>
+  </div>
+  <div class="cdrawer-foot" id="cdrawerFoot" style="display:none">
+    <div class="ctotal">
+      <span class="ctotal-label">Total</span>
+      <span class="ctotal-amt" id="ctotalAmt">$0</span>
+    </div>
+    <button class="ccheckout" onclick="alert('Proceeding to secure checkout! ✦')">
+      Checkout Securely
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="1" y1="8" x2="15" y2="8"/><polyline points="9,2 15,8 9,14"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mnav" id="mnav">
+  <button class="mnav-close" onclick="closeMnav()">
+    <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="2" y1="2" x2="24" y2="24"/><line x1="24" y1="2" x2="2" y2="24"/></svg>
+  </button>
+  <a href="#" onclick="closeMnav()">Shop</a>
+  <a href="#" onclick="closeMnav()">Collections</a>
+  <a href="#" onclick="closeMnav()">About</a>
+  <a href="#" onclick="closeMnav()">Journal</a>
+  <a href="#" onclick="closeMnav()">Contact</a>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="1,7 5,11 13,3"/></svg>
+  <span id="toastMsg"></span>
+</div>
+
+<script>
+
+
+/* MENU */
+document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('mnav').classList.add('open'));
+function closeMnav(){document.getElementById('mnav').classList.remove('open');}
+
+/* CART */
+const THUMBS={
+  p:'<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><ellipse cx="40" cy="22" rx="13" ry="6"/><path d="M27 22C21 38 23 58 40 62C57 58 59 38 53 22"/></svg>',
+  y:'<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="28" y="40" width="24" height="26" rx="2"/><ellipse cx="40" cy="40" rx="12" ry="4"/><line x1="40" y1="36" x2="40" y2="22"/></svg>',
+  s:'<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M29 38L25 64Q40 68 55 64L51 38Z"/><ellipse cx="40" cy="38" rx="11" ry="4"/></svg>',
+  b:'<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="16" y="24" width="20" height="32" rx="1.5"/><rect x="20" y="20" width="20" height="32" rx="1.5"/><rect x="24" y="16" width="20" height="32" rx="1.5"/></svg>',
+  m:'<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="18" y="14" width="44" height="52" rx="2"/><rect x="24" y="20" width="32" height="26" rx="1"/></svg>',
+  t:'<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M29 30L33 60Q40 64 47 60L51 30Z"/><ellipse cx="40" cy="30" rx="11" ry="4"/></svg>',
+  c:'<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="20" y="20" width="40" height="30" rx="2"/><line x1="20" y1="30" x2="60" y2="30"/></svg>',
+  bl:'<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.3"><ellipse cx="40" cy="55" rx="18" ry="8"/><path d="M22 55C22 55 18 30 40 18C62 30 58 55 58 55"/></svg>'
+};
+const BG_CLS={p:'bg-p',y:'bg-y',s:'bg-s',b:'bg-b',m:'bg-m',t:'bg-t',c:'bg-c',bl:'bg-bl'};
+
+let cart=[];
+function addToCart(name,price,col){
+  const ex=cart.find(i=>i.name===name);
+  if(ex)ex.qty++;else cart.push({name,price,col,qty:1});
+  renderCart();showToast(name+' added to bag');
+}
+function removeItem(i){cart.splice(i,1);renderCart();}
+function renderCart(){
+  const cnt=cart.reduce((s,i)=>s+i.qty,0);
+  const tot=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById('cartCnt').textContent=cnt;
+  const body=document.getElementById('cdrawerBody');
+  const foot=document.getElementById('cdrawerFoot');
+  const empty=document.getElementById('cempty');
+  if(!cart.length){body.innerHTML='';body.appendChild(empty);empty.style.display='block';foot.style.display='none';return;}
+  empty.style.display='none';foot.style.display='block';
+  document.getElementById('ctotalAmt').textContent='$'+tot;
+  body.innerHTML=cart.map((item,i)=>`
+    <div class="citem">
+      <div class="citem-thumb ${BG_CLS[item.col]||'bg-p'}">${THUMBS[item.col]||''}</div>
+      <div class="citem-details">
+        <div class="citem-name">${item.name}${item.qty>1?' ×'+item.qty:''}</div>
+        <div class="citem-price">$${item.price*item.qty}</div>
+      </div>
+      <button class="citem-rm" onclick="removeItem(${i})">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
+      </button>
+    </div>`).join('');
+}
+function openCart(){document.getElementById('cdrawer').classList.add('open');document.getElementById('overlay').classList.add('show');}
+function closeCart(){document.getElementById('cdrawer').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
+document.getElementById('cartFab').addEventListener('click',openCart);
+document.getElementById('cartFab2').addEventListener('click',openCart);
+document.getElementById('overlay').addEventListener('click',closeCart);
+
+/* TOAST */
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+/* SCROLL REVEAL */
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');});},{threshold:.08});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+
+renderCart();
+</script>
+</body>
+</html>
