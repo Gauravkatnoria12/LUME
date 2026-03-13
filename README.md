@@ -1,2 +1,2 @@
 # LUME
-Drop-Shipping 
+Drop-Shipping : Just a front-end Development
